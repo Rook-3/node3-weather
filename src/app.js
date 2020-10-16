@@ -5,6 +5,7 @@ const request = require("request")
 const foreCast = require("./utils/forecast")
 const geoCode = require("./utils/geocode")
 const app = express()
+const port = process.env.PORT || 3000
 
 //Define paths for express config
 const publicDirectory = path.join(__dirname, "../public")
@@ -23,21 +24,21 @@ app.get("/",(req,res)=>{
     //2nd argument is object that contains all the values you want the view to access
     res.render("index", {
         title: "Weather",
-        name: "Mike Jones"
+        name: "John Conner"
     })
 })
 
 app.get("/about",(req,res)=>{
     res.render("about",{
         title:"About Page",
-        name: "Mike Jones"
+        name: "John Conner"
     })
 })
 
 app.get("/help",(req,res)=>{
     res.render("help",{message:"Help Me Get Through",
                 title: "Help",
-                name:"Mike Jones"})
+                name:"John Conner"})
 })
 
 app.get("/weather",(req,res)=>{
@@ -91,16 +92,16 @@ app.get("/products",(req,res)=>{
 app.get("/help/*",(req,res)=>{
     res.render("page404",{errorMessage:"Help article not found",
                     title: "help-404 page",
-                    name:"Mike Jones"})
+                    name:"John Conner"})
 })
 
 app.get("*",(req,res)=>{
     res.render("page404",{errorMessage:"404 Page Not Found",
     title: "Page Not Found",
-    name:"Mike Jones"})
+    name:"John Conner"})
 })
 
 
-app.listen(3000, ()=>{
-    console.log("Server is up on port 3000")
+app.listen(port, ()=>{
+    console.log("Server is up on port " + port)
 })
